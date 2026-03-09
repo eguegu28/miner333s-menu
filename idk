@@ -1,0 +1,28 @@
+/* miner333-menu: e9u28 Style Auto-Answer */
+(function() {
+    const e9u = setInterval(() => {
+        try {
+            // Locate the React state node for game data
+            const root = document.querySelector('#app > div > div');
+            if (!root) return;
+            const state = Object.values(root).find(v => v.children?._owner).children._owner.stateNode;
+            
+            if (state && state.state.question) {
+                const correct = state.state.question.correctAnswers;
+                const buttons = document.querySelectorAll('[class*="answerContainer"]');
+
+                // Instant click on the correct answer
+                buttons.forEach(btn => {
+                    if (correct.includes(btn.innerText) || correct.includes(btn.textContent)) {
+                        btn.click();
+                    }
+                });
+
+                // e9u Instant Skip: Bypasses the "Correct!" screen immediately
+                const skip = document.querySelector('[class*="feedback"], [id*="feedback"]')?.firstChild || document.querySelector('div[role="button"]');
+                if (skip) skip.click();
+            }
+        } catch (e) {}
+    }, 150); // High-speed interval (150ms)
+    alert("miner333 x e9u28 Active!");
+})();
