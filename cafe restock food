@@ -1,0 +1,8 @@
+(async () => {
+    let n = Object.values(document.querySelector('#app > div > div'))[1].children[1]._owner.stateNode;
+    let foods = n.state.foods;
+    foods.forEach(food => food.stock = 999);
+    n.setState({ foods });
+    alert("Food Restocked!");
+})();
+Use code with caution.
