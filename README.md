@@ -1,1 +1,5 @@
-yo hi as long as you have a good day ya can copy anything
+do f12 then paste the code in if it wont allow you do allow pasting first
+you may not abuse. 
+the entire reason is for you to use them but not abuse 
+them. 
+your not permitted to do anything other then using them one of those you cant do is trolling
