@@ -1,0 +1,13 @@
+(async () => {
+    const rewards = { addedTokens: 500, addedXp: 300 };
+    try {
+        await fetch( "https://api.blooket.com", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(rewards)
+        });
+        alert("Max daily tokens (500) and XP (300) added! Refresh your page.");
+    } catch (e) {
+        alert("Error: Make sure you are logged in on the Stats page.");
+    }
+})();
