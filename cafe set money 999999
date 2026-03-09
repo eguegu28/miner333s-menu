@@ -1,0 +1,9 @@
+(async () => {
+    const state = Object.values(document.querySelector('#app > div > div')).find(x => x?._owner)?._owner?.stateNode;
+    if (!state) return;
+
+    const foods = state.state.foods.map(f => ({ ...f, stock: 999 }));
+    state.setState({ cafeCash: 999999, foods });
+
+    alert("Menu: Cash & Food Maxed!");
+})();
