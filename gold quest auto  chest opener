@@ -1,0 +1,6 @@
+setInterval(() => {
+    const chests = document.querySelectorAll('[class*="chest"]');
+    if (chests.length > 0) {
+        chests[Math.floor(Math.random() * chests.length)].click();
+    }
+}, 500);
