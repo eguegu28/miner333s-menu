@@ -1,0 +1,12 @@
+(function() {
+    let lureRank = prompt("Enter lure level (1-5):");
+    let app = document.querySelector('#app > div > div');
+    let state = Object.values(app).find(x => x?._owner)?._owner?.stateNode;
+
+    if (state && state.setState) {
+        state.setState({ lure: parseInt(lureRank) });
+        alert("Lure level set to " + lureRank + "!");
+    } else {
+        alert("Error: Make sure you are actively in the game!");
+    }
+})();
