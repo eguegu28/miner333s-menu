@@ -1,0 +1,9 @@
+(function() {
+    let state = Object.values(document.querySelector('#app > div > div')).find(x => x?._owner)?._owner.stateNode;
+    if (state && state.setState) {
+        state.setState({ frenzy: true });
+        alert("Frenzy Mode Activated!");
+    } else {
+        alert("Error: Make sure you are actually casting your line!");
+    }
+})();
