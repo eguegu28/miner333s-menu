@@ -1,0 +1,15 @@
+(function() {
+    const targetWeight = 99999999999999999;
+    const updateWeight = () => {
+        const app = document.querySelector('#app > div > div');
+        if (!app) return;
+        const state = Object.values(app).find(x => x?._owner)?._owner?.stateNode;
+        if (state && typeof state.state?.weight !== 'undefined') {
+            state.setState({ weight: targetWeight });
+            clearInterval(weightLoop);
+            alert("Weight updated to: " + targetWeight);
+        }
+    };
+    const weightLoop = setInterval(updateWeight, 1000);
+    console.log("Script active. Waiting for game data...");
+})();
