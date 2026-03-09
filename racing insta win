@@ -1,0 +1,5 @@
+(async () => {
+    let n = Object.values(document.querySelector('#app > div > div')).children._owner.stateNode;
+    n.setState({ progress: 100 }); // Sets your race progress to 100%
+    alert("Progress set to 100%! Answer one question correctly to win.");
+})();
