@@ -1,0 +1,36 @@
+
+(async () => {
+    setInterval(() => {
+        try {
+            const getReactElement = (el) => {
+                for (const key in el) {
+                    if (key.startsWith('__reactInternalInstance$') || key.startsWith('__reactFiber$')) return el[key];
+                }
+                return null;
+            };
+
+            let app = document.querySelector('#app > div > div');
+            if (!app) return;
+
+            let fiber = getReactElement(app);
+            let stateNode = fiber?.return?.stateNode || fiber?.child?.stateNode;
+            
+            if (stateNode && stateNode.state && stateNode.state.question) {
+                let question = stateNode.state.question;
+                let answers = question.answers;
+                let correctAnswers = question.correctAnswers;
+                
+                let answerContainers = document.querySelectorAll('[class*="answerContainer"]');
+                answerContainers.forEach((container, index) => {
+                    if (correctAnswers.includes(answers[index])) {
+                        container.click();
+                    }
+                });
+            }
+            
+            // Auto-click "Next" or "Feedback" buttons to keep going
+            document.querySelector('[class*="feedback"]')?.firstChild?.click();
+        } catch (e) {}
+    }, 500);
+    alert("Auto-Answer Activated!");
+})();
