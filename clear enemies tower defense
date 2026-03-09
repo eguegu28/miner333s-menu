@@ -1,0 +1,11 @@
+(async () => {
+    const n = Object.values(document.querySelector('#app > div > div')).find(x => x?._owner)?._owner?.stateNode;
+    if (n && n.state.enemies) {
+        n.setState({ 
+            enemies: [], 
+            enemyHealth: 0,
+            totalDamage: n.state.totalDamage + 100000 
+        });
+        alert("Enemies Cleared!");
+    }
+})();
