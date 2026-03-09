@@ -1,0 +1,19 @@
+(function() {
+    const targetFossils = 999999999;
+    window.dinoLoop = setInterval(() => {
+        try {
+            const app = document.querySelector('#app > div > div');
+            if (!app) return;
+            const stateNode = Object.values(app).find(x => x?._owner)?. _owner?.stateNode;
+            if (stateNode && stateNode.state) {
+                stateNode.setState({ 
+                    fossils: targetFossils, 
+                    fossilMultiplier: 100,
+                    isShielded: true 
+                });
+                if (stateNode.state.choices) console.log("Rocks Revealed:", stateNode.state.choices);
+            }
+        } catch (e) {}
+    }, 500);
+    alert("Dino Hack Active: Fossils Maxed & Shielded.");
+})();
