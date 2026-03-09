@@ -1,0 +1,31 @@
+/* miner333-menu - Fix for "Undefined" */
+(async () => {
+    try {
+        // Find the Blooket Game Controller
+        let app = document.querySelector('#app > div > div');
+        let reactor = Object.values(app).find(v => v.children._owner).children._owner.stateNode;
+
+        if (!reactor) {
+            alert("Error: Game not found! Make sure you are IN the game (Cafe/Racing) first.");
+            return;
+        }
+
+        // Example: Fix for Cafe Restock
+        if (reactor.state && reactor.state.foods) {
+            let newFoods = [...reactor.state.foods];
+            newFoods.forEach(f => f.stock = 999);
+            reactor.setState({ foods: newFoods });
+            alert("miner333: Foods Restocked!");
+        } 
+        
+        // Example: Fix for Racing
+        else if (reactor.state && reactor.state.progress !== undefined) {
+            reactor.setState({ progress: 100 });
+            alert("miner333: Progress set to 100!");
+        }
+
+    } catch (e) {
+        console.log(e);
+        alert("Still Undefined. Try clicking inside the game window first, then run the code.");
+    }
+})();
