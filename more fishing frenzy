@@ -1,0 +1,25 @@
+// Function to Set Max Weight (Reactor Weight)
+function setWeight(amount = 9999999999999) {
+    const state = Object.values(document.querySelector('#app > div > div'))[1].children[0]._owner.stateNode;
+    state.setState({ weight: amount });
+}
+
+// Function to Set Lure Rank
+function setLure(rank = 5) {
+    const state = Object.values(document.querySelector('#app > div > div'))[1].children[0]._owner.stateNode;
+    state.setState({ lure: rank });
+}
+
+// Function to Force Infinite Frenzy
+function forceFrenzy() {
+    const state = Object.values(document.querySelector('#app > div > div'))[1].children[0]._owner.stateNode;
+    state.setState({ frenzy: true });
+    // Interval to keep it true if the game tries to reset it
+    setInterval(() => state.setState({ frenzy: true }), 1000);
+}
+
+// Function for Auto-Correct (Fishing Frenzy specifically)
+function autoAnswer() {
+    const state = Object.values(document.querySelector('#app > div > div'))[1].children[0]._owner.stateNode;
+    state.setState({ isCorrect: true, question: null }); // Simplistic toggle for some versions
+}
